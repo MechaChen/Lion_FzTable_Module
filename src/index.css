@@ -1,13 +1,176 @@
+@charset "UTF-8";
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Verdana, Arial, \\5fae\8edf\6b63\9ed1\9ad4, Microsoft JhengHei, \\5fae\8edf\96c5\9ed1\9ad4, Microsoft YaHei;
+  font-size: 14px;
+  color: #999;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+.schedule {
+  width: 90%;
+  margin: 30px auto 0;
+}
+
+.schedule .set_off {
+  float: left;
+  width: 12.5%;
+}
+
+.schedule .set_off .row {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.schedule .set_off .row .info {
+  width: 100%;
+}
+
+.schedule .return {
+  float: left;
+  width: 87.5%;
+  margin-left: -1px;
+}
+
+.schedule .date {
+  background-color: #eaedf2;
+  color: #666;
+}
+
+.schedule .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.schedule .row .info {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 14.285714%;
+  padding: 15px 0;
+  border: 0.5px solid #e1e2e4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+.schedule .row .info:not(.date) {
+  cursor: pointer;
+}
+
+.schedule .row .info:not(.date):hover, .schedule .row .info:not(.date).active {
+  border: 0.5px solid #ff8f27;
+  background-color: #fff9e3;
+  position: relative;
+  z-index: 2;
+}
+
+.schedule .row .info.on_sale::after {
+  content: "最便宜";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 0;
+  border-left: 20px solid #ff8f27;
+  border-bottom: 20px solid transparent;
+  font-size: 14px;
+  color: #ff8f27;
+}
+
+.schedule .row .info.new_year {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.schedule .row .info .year {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding-right: 28%;
+  color: #0a0;
+  font-size: 14px;
+}
+
+.schedule .row .info .price {
+  display: inline-block;
+  margin-right: 4%;
+  font-weight: 600;
+  color: #444;
+}
+
+@media all and (max-width: 980px) {
+  .schedule {
+    width: 98%;
+  }
+  .schedule .set_off {
+    width: 25%;
+  }
+  .schedule .return {
+    width: 75%;
+    overflow: hidden;
+    position: relative;
+  }
+  .schedule .return .leftBtn,
+  .schedule .return .rightBtn {
+    position: absolute;
+    top: 240px;
+    left: 1px;
+    width: 30px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    cursor: pointer;
+  }
+  .schedule .return .leftBtn::after, .schedule .return .leftBtn::before,
+  .schedule .return .rightBtn::after,
+  .schedule .return .rightBtn::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 10px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    -webkit-transform-origin: center left;
+            transform-origin: center left;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  .schedule .return .leftBtn::after,
+  .schedule .return .rightBtn::after {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  .schedule .return .rightBtn {
+    left: auto;
+    right: 1px;
+  }
+  .schedule .return .rightBtn::after, .schedule .return .rightBtn::before {
+    -webkit-transform-origin: center right;
+            transform-origin: center right;
+  }
+  .schedule .return .row {
+    -webkit-transform: translateX(-42.85714%);
+            transform: translateX(-42.85714%);
+    width: 233.333333%;
+  }
+}
+/*# sourceMappingURL=index.css.map */

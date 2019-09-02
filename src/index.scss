@@ -1,0 +1,145 @@
+$focusColor: #ff8f27;
+
+body {
+  margin: 0;
+  font-family: Verdana, Arial, \\5fae\8edf\6b63\9ed1\9ad4, Microsoft JhengHei,
+    \\5fae\8edf\96c5\9ed1\9ad4, Microsoft YaHei;
+  font-size: 14px;
+  color: #999;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.schedule {
+  width: 90%;
+  margin: 30px auto 0;
+  .set_off {
+    float: left;
+    width: 12.5%;
+    .row {
+      flex-flow: column nowrap;
+      .info {
+        width: 100%;
+      }
+    }
+  }
+  .return {
+    float: left;
+    width: 87.5%;
+    margin-left: -1px;
+  }
+  .date {
+    background-color: #eaedf2;
+    color: #666;
+  }
+  .row {
+    display: flex;
+    .info {
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 14.285714%;
+      padding: 15px 0;
+      border: 0.5px solid #e1e2e4;
+      // margin: -1px;
+      box-sizing: border-box;
+      position: relative;
+      &:not(.date) {
+        cursor: pointer;
+      }
+      &:not(.date):hover,
+      &:not(.date).active {
+        border: 0.5px solid $focusColor;
+        background-color: #fff9e3;
+        position: relative;
+        z-index: 2;
+      }
+      &.on_sale::after {
+        content: "最便宜";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 0;
+        border-left: 20px solid $focusColor;
+        border-bottom: 20px solid transparent;
+        font-size: 14px;
+        color: $focusColor;
+      }
+      &.new_year {
+        flex-flow: column nowrap;
+      }
+      .year {
+        align-self: flex-end;
+        padding-right: 28%;
+        color: #0a0;
+        font-size: 14px;
+      }
+      .price {
+        display: inline-block;
+        margin-right: 4%;
+        font-weight: 600;
+        color: #444;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 980px) {
+  .schedule {
+    width: 98%;
+    .set_off {
+      width: 25%;
+    }
+    .return {
+      width: 75%;
+      overflow: hidden;
+      position: relative;
+      .leftBtn,
+      .rightBtn {
+        position: absolute;
+        top: 240px;
+        left: 1px;
+        width: 30px;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 3;
+        cursor: pointer;
+        &::after,
+        &::before {
+          content: "";
+          position: absolute;
+          top: 24px;
+          left: 0;
+          right: 0;
+          margin: auto;
+          width: 10px;
+          height: 2px;
+          border-radius: 2px;
+          background-color: #fff;
+          transform-origin: center left;
+          transform: rotate(-45deg);
+        }
+        &::after {
+          transform: rotate(45deg);
+        }
+      }
+      .rightBtn {
+        left: auto;
+        right: 1px;
+        &::after,
+        &::before {
+          transform-origin: center right;
+        }
+      }
+      .row {
+        transform: translateX(-42.857142%);
+        width: 233.333333%;
+      }
+    }
+  }
+}
