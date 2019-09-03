@@ -37,6 +37,17 @@ code {
   margin-left: -1px;
 }
 
+.schedule .return .info.other {
+  background-color: #f3f3f3;
+}
+
+.schedule .return .info:hover, .schedule .return .info.active {
+  border: 0.5px solid #ff8f27;
+  background-color: #fff9e3;
+  position: relative;
+  z-index: 2;
+}
+
 .schedule .date {
   background-color: #eaedf2;
   color: #666;
@@ -69,13 +80,6 @@ code {
 
 .schedule .row .info:not(.date) {
   cursor: pointer;
-}
-
-.schedule .row .info:not(.date):hover, .schedule .row .info:not(.date).active {
-  border: 0.5px solid #ff8f27;
-  background-color: #fff9e3;
-  position: relative;
-  z-index: 2;
 }
 
 .schedule .row .info.on_sale::after {
@@ -111,6 +115,7 @@ code {
   margin-right: 4%;
   font-weight: 600;
   color: #444;
+  pointer-events: none;
 }
 
 .schedule .row .info .price .ex {
@@ -121,7 +126,7 @@ code {
 
 @media all and (max-width: 980px) {
   .schedule {
-    width: 98%;
+    width: 90%;
   }
   .schedule .set_off {
     width: 25%;

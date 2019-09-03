@@ -30,6 +30,18 @@ code {
     float: left;
     width: 87.5%;
     margin-left: -1px;
+    .info {
+      &.other {
+        background-color: #f3f3f3;
+      }
+      &:hover,
+      &.active {
+        border: 0.5px solid $focusColor;
+        background-color: #fff9e3;
+        position: relative;
+        z-index: 2;
+      }
+    }
   }
   .date {
     background-color: #eaedf2;
@@ -50,13 +62,6 @@ code {
       position: relative;
       &:not(.date) {
         cursor: pointer;
-      }
-      &:not(.date):hover,
-      &:not(.date).active {
-        border: 0.5px solid $focusColor;
-        background-color: #fff9e3;
-        position: relative;
-        z-index: 2;
       }
       &.on_sale::after {
         content: "最便宜";
@@ -84,6 +89,7 @@ code {
         margin-right: 4%;
         font-weight: 600;
         color: #444;
+        pointer-events: none;
         .ex {
           display: inline-block;
           margin-left: 5px;
@@ -96,7 +102,7 @@ code {
 
 @media all and (max-width: 980px) {
   .schedule {
-    width: 98%;
+    width: 90%;
     .set_off {
       width: 25%;
     }

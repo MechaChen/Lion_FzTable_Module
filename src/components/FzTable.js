@@ -1,290 +1,35 @@
 import React from "react";
 import commaNumber from "comma-number";
+import axios from "axios";
 
 class FzTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      setOffDays: [
-        "12/27(三)",
-        "12/28(四)",
-        "12/29(五)",
-        "12/30(六)",
-        "12/31(日)",
-        "01/01(一)",
-        "01/02(二)"
-      ],
-      returnDays: [
-        "12/30(六)",
-        "12/31(日)",
-        "01/01(一)",
-        "01/02(二)",
-        "01/03(三)",
-        "01/04(四)",
-        "01/05(五)"
-      ],
-      schedules: [
-        [
-          {
-            key: 1,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 2,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 3,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 4,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 5,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 6,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 7,
-            price: 15568,
-            onSale: false
-          }
-        ],
-        [
-          {
-            key: 1,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 2,
-            price: 12300,
-            onSale: true
-          },
-          {
-            key: 3,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 4,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 5,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 6,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 7,
-            price: 15568,
-            onSale: false
-          }
-        ],
-        [
-          {
-            key: 1,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 2,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 3,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 4,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 5,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 6,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 7,
-            price: 15568,
-            onSale: false
-          }
-        ],
-        [
-          {
-            key: 1,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 2,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 3,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 4,
-            price: 12300,
-            onSale: true
-          },
-          {
-            key: 5,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 6,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 7,
-            price: 15568,
-            onSale: false
-          }
-        ],
-        [
-          {
-            key: 1,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 2,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 3,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 4,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 5,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 6,
-            price: 12300,
-            onSale: true
-          },
-          {
-            key: 7,
-            price: 15568,
-            onSale: false
-          }
-        ],
-        [
-          {
-            key: 1,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 2,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 3,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 4,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 5,
-            price: 15568,
-            onSale: false
-          },
-          {
-            key: 6,
-            price: 12300,
-            onSale: true
-          },
-          {
-            key: 7,
-            price: 15568,
-            onSale: false
-          }
-        ],
-        [
-          {
-            key: 1,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 2,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 3,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 4,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 5,
-            price: null,
-            onSale: false
-          },
-          {
-            key: 6,
-            price: 12300,
-            onSale: true
-          },
-          {
-            key: 7,
-            price: 15568,
-            onSale: false
-          }
-        ]
-      ]
-    };
+  state = {
+    setOffDays: [],
+    returnDays: [],
+    schedules: [],
+    row: null,
+    col: null
+  };
+
+  handleClick = (row, col) => {
+    this.setState(() => ({ row, col }));
+  };
+
+  componentDidMount() {
+    // 行程
+    axios.get("JSON/schedules.json").then(res =>
+      this.setState(() => ({
+        schedules: res.data
+      }))
+    );
+    // 出發日期
+    axios
+      .get("JSON/setOffDays.json")
+      .then(res => this.setState(() => ({ setOffDays: res.data })));
+    // 回歸日期
+    axios
+      .get("JSON/returnDays.json")
+      .then(res => this.setState(() => ({ returnDays: res.data })));
   }
 
   render() {
@@ -313,12 +58,21 @@ class FzTable extends React.Component {
               </li>
             ))}
           </ul>
-          {this.state.schedules.map((row, index) => (
-            <ul key={index} className="row">
-              {row.map(schedule => (
+          {this.state.schedules.map((row, rowIndex) => (
+            <ul key={rowIndex} className="row">
+              {row.map((schedule, colIndex) => (
                 <li
                   key={schedule.key}
-                  className={`info ${schedule.onSale && "on_sale"}`}
+                  className={`info ${schedule.onSale ? "on_sale" : ""} ${
+                    this.state.col === colIndex || this.state.row === rowIndex
+                      ? "other"
+                      : ""
+                  } ${
+                    this.state.col === colIndex && this.state.row === rowIndex
+                      ? "active"
+                      : ""
+                  }`}
+                  onClick={() => this.handleClick(rowIndex, colIndex)}
                 >
                   {schedule.price ? (
                     <span className="price">
@@ -326,7 +80,7 @@ class FzTable extends React.Component {
                       <span className="ex">起</span>
                     </span>
                   ) : (
-                    "--"
+                    <span>{rowIndex === 0 ? "--" : "查看"}</span>
                   )}
                 </li>
               ))}
