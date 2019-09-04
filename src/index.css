@@ -128,13 +128,45 @@ code {
   .schedule {
     width: 90%;
   }
-  .schedule .set_off {
+  .schedule .set_off.col-1 {
+    width: 50%;
+  }
+  .schedule .set_off.col-2 {
+    width: 33.33333%;
+  }
+  .schedule .set_off.col-3 {
     width: 25%;
   }
+  .schedule .set_off.col-4 {
+    width: 20%;
+  }
+  .schedule .set_off.col-5 {
+    width: 16.66667%;
+  }
+  .schedule .set_off.col-6 {
+    width: 14.28571%;
+  }
   .schedule .return {
-    width: 75%;
     overflow: hidden;
     position: relative;
+  }
+  .schedule .return.col-1 {
+    width: 50%;
+  }
+  .schedule .return.col-2 {
+    width: 66.66667%;
+  }
+  .schedule .return.col-3 {
+    width: 75%;
+  }
+  .schedule .return.col-4 {
+    width: 80%;
+  }
+  .schedule .return.col-5 {
+    width: 83.33333%;
+  }
+  .schedule .return.col-6 {
+    width: 85.71429%;
   }
   .schedule .return .leftBtn,
   .schedule .return .rightBtn {
@@ -179,9 +211,106 @@ code {
             transform-origin: center right;
   }
   .schedule .return .row {
+    -webkit-transition: 1s;
+    transition: 1s;
+  }
+  .schedule .return .row.col-1 {
+    width: 700%;
+  }
+  .schedule .return .row.col-1.state-0 {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  .schedule .return .row.col-1.state-1 {
+    -webkit-transform: translateX(-14.28571%);
+            transform: translateX(-14.28571%);
+  }
+  .schedule .return .row.col-1.state-2 {
+    -webkit-transform: translateX(-28.57143%);
+            transform: translateX(-28.57143%);
+  }
+  .schedule .return .row.col-1.state-3 {
     -webkit-transform: translateX(-42.85714%);
             transform: translateX(-42.85714%);
-    width: 233.333333%;
+  }
+  .schedule .return .row.col-1.state-4 {
+    -webkit-transform: translateX(-57.14286%);
+            transform: translateX(-57.14286%);
+  }
+  .schedule .return .row.col-1.state-5 {
+    -webkit-transform: translateX(-71.42857%);
+            transform: translateX(-71.42857%);
+  }
+  .schedule .return .row.col-1.state-6 {
+    -webkit-transform: translateX(-85.71429%);
+            transform: translateX(-85.71429%);
+  }
+  .schedule .return .row.col-2 {
+    width: 350%;
+  }
+  .schedule .return .row.col-2.state-0 {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  .schedule .return .row.col-2.state-1 {
+    -webkit-transform: translateX(-28.57143%);
+            transform: translateX(-28.57143%);
+  }
+  .schedule .return .row.col-2.state-2 {
+    -webkit-transform: translateX(-57.14286%);
+            transform: translateX(-57.14286%);
+  }
+  .schedule .return .row.col-2.state-3 {
+    -webkit-transform: translateX(-71.42857%);
+            transform: translateX(-71.42857%);
+  }
+  .schedule .return .row.col-3 {
+    width: 233.33333%;
+  }
+  .schedule .return .row.col-3.state-0 {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  .schedule .return .row.col-3.state-1 {
+    -webkit-transform: translateX(-42.85714%);
+            transform: translateX(-42.85714%);
+  }
+  .schedule .return .row.col-3.state-2 {
+    -webkit-transform: translateX(-57.14286%);
+            transform: translateX(-57.14286%);
+  }
+  .schedule .return .row.col-4 {
+    width: 175%;
+  }
+  .schedule .return .row.col-4.state-0 {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  .schedule .return .row.col-4.state-1 {
+    -webkit-transform: translateX(-42.85714%);
+            transform: translateX(-42.85714%);
+  }
+  .schedule .return .row.col-5 {
+    width: 140%;
+  }
+  .schedule .return .row.col-5.state-0 {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  .schedule .return .row.col-5.state-1 {
+    -webkit-transform: translateX(-28.57143%);
+            transform: translateX(-28.57143%);
+  }
+  .schedule .return .row.col-6 {
+    width: 116.66667%;
+  }
+  .schedule .return .row.col-6.state-0 {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  .schedule .return .row.col-6.state-1 {
+    -webkit-transform: translateX(-14.28571%);
+            transform: translateX(-14.28571%);
   }
 }
 /*# sourceMappingURL=index.css.map */

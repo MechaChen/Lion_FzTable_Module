@@ -8,11 +8,24 @@ class FzTable extends React.Component {
     returnDays: [],
     schedules: [],
     row: null,
-    col: null
+    col: null,
+    curPos: 0,
+    colNum: 3,
+    state: 0
   };
 
   handleClick = (row, col) => {
     this.setState(() => ({ row, col }));
+  };
+
+  handleMobileLeftTab = () => {
+    if (this.state.state > 0)
+      this.setState(() => ({ state: this.state.state - 1 }));
+  };
+
+  handleMobileRightTab = () => {
+    if (this.state.state < 7 / this.state.colNum - 1)
+      this.setState(() => ({ state: this.state.state + 1 }));
   };
 
   componentDidMount() {
@@ -35,7 +48,7 @@ class FzTable extends React.Component {
   render() {
     return (
       <div className="schedule">
-        <div className="set_off">
+        <div className={`set_off col-${this.state.colNum}`}>
           <ul className="row">
             <li className="info date">
               <span>去程</span>
@@ -48,10 +61,16 @@ class FzTable extends React.Component {
             ))}
           </ul>
         </div>
-        <div className="return">
-          <div className="leftBtn"></div>
-          <div className="rightBtn"></div>
-          <ul className="row">
+        <div className={`return col-${this.state.colNum}`}>
+          {this.state.state > 0 && (
+            <div onClick={this.handleMobileLeftTab} className="leftBtn"></div>
+          )}
+          {this.state.state < 7 / this.state.colNum - 1 && (
+            <div onClick={this.handleMobileRightTab} className="rightBtn"></div>
+          )}
+          <ul
+            className={`row col-${this.state.colNum} state-${this.state.state}`}
+          >
             {this.state.returnDays.map(returnDay => (
               <li key={returnDay} className="info date">
                 {returnDay}
@@ -59,7 +78,10 @@ class FzTable extends React.Component {
             ))}
           </ul>
           {this.state.schedules.map((row, rowIndex) => (
-            <ul key={rowIndex} className="row">
+            <ul
+              key={rowIndex}
+              className={`row col-${this.state.colNum} state-${this.state.state}`}
+            >
               {row.map((schedule, colIndex) => (
                 <li
                   key={schedule.key}
