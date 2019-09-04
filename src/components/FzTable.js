@@ -9,23 +9,38 @@ class FzTable extends React.Component {
     schedules: [],
     row: null,
     col: null,
-    curPos: 0,
-    colNum: 3,
-    state: 0
+    state: 0,
+    count: {
+      colNum: this.props.count.colNum,
+      slide: this.props.count.slide
+    },
+    speed: this.props.speed,
+    whenClick: this.props.whenClick
   };
 
-  handleClick = (row, col) => {
+  handleClick = ({ target }, row, col) => {
     this.setState(() => ({ row, col }));
+    this.state.whenClick(target);
   };
 
   handleMobileLeftTab = () => {
-    if (this.state.state > 0)
-      this.setState(() => ({ state: this.state.state - 1 }));
+    const { state } = this.state;
+    const { slide } = this.state.count;
+    if (state - slide < 0) {
+      this.setState(() => ({ state: 0 }));
+    } else {
+      this.setState(() => ({ state: state - slide }));
+    }
   };
 
   handleMobileRightTab = () => {
-    if (this.state.state < 7 / this.state.colNum - 1)
-      this.setState(() => ({ state: this.state.state + 1 }));
+    const { state } = this.state;
+    const { colNum, slide } = this.state.count;
+    if (state + colNum < 7 - slide) {
+      this.setState(() => ({ state: state + slide }));
+    } else {
+      this.setState(() => ({ state: 7 - colNum }));
+    }
   };
 
   componentDidMount() {
@@ -46,6 +61,9 @@ class FzTable extends React.Component {
   }
 
   render() {
+    const { colNum } = this.state.count;
+    const { setOffDays, col, state } = this.state;
+    const transition = { transition: `${this.state.speed}s` };
     return (
       <div className="schedule">
         <div className={`set_off col-${this.state.colNum}`}>
@@ -54,23 +72,21 @@ class FzTable extends React.Component {
               <span>去程</span>
               <span>回程</span>
             </li>
-            {this.state.setOffDays.map(setOffDay => (
+            {setOffDays.map(setOffDay => (
               <li key={setOffDay} className="info date">
                 {setOffDay}
               </li>
             ))}
           </ul>
         </div>
-        <div className={`return col-${this.state.colNum}`}>
-          {this.state.state > 0 && (
+        <div className={`return col-${colNum}`}>
+          {state > 0 && (
             <div onClick={this.handleMobileLeftTab} className="leftBtn"></div>
           )}
-          {this.state.state < 7 / this.state.colNum - 1 && (
+          {state + colNum < 7 && (
             <div onClick={this.handleMobileRightTab} className="rightBtn"></div>
           )}
-          <ul
-            className={`row col-${this.state.colNum} state-${this.state.state}`}
-          >
+          <ul className={`row col-${colNum} state-${state}`} style={transition}>
             {this.state.returnDays.map(returnDay => (
               <li key={returnDay} className="info date">
                 {returnDay}
@@ -80,21 +96,22 @@ class FzTable extends React.Component {
           {this.state.schedules.map((row, rowIndex) => (
             <ul
               key={rowIndex}
-              className={`row col-${this.state.colNum} state-${this.state.state}`}
+              className={`row col-${colNum} state-${state}`}
+              style={transition}
             >
               {row.map((schedule, colIndex) => (
                 <li
                   key={schedule.key}
                   className={`info ${schedule.onSale ? "on_sale" : ""} ${
-                    this.state.col === colIndex || this.state.row === rowIndex
+                    col === colIndex || this.state.row === rowIndex
                       ? "other"
                       : ""
                   } ${
-                    this.state.col === colIndex && this.state.row === rowIndex
+                    col === colIndex && this.state.row === rowIndex
                       ? "active"
                       : ""
                   }`}
-                  onClick={() => this.handleClick(rowIndex, colIndex)}
+                  onClick={e => this.handleClick(e, rowIndex, colIndex)}
                 >
                   {schedule.price ? (
                     <span className="price">
@@ -113,5 +130,16 @@ class FzTable extends React.Component {
     );
   }
 }
+
+FzTable.defaultProps = {
+  count: {
+    colNum: 4,
+    slide: 2
+  },
+  speed: 0.3,
+  whenClick($element) {
+    console.log($element);
+  }
+};
 
 export default FzTable;

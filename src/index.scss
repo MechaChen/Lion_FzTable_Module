@@ -156,17 +156,15 @@ code {
         }
       }
       .row {
-        transition: 1s;
+        // transition: 1s;
         @for $i from 1 through 6 {
           &.col-#{$i} {
             width: percentage(7 / $i);
-            @for $j from 0 through (7 / $i - 1) {
+            @for $j from 0 through 7 {
               &.state-#{$j} {
-                @if ($i * ($j + 1)) > 7 {
-                  transform: translateX(percentage($i / 7 - 1));
-                } @else if {
-                  transform: translateX(percentage(-$i * $j / 7));
-                }
+                // transform: translateX(percentage($i / 7 - 1));
+                transform: translateX(percentage(-$j / 7));
+                transform: translateX(percentage(-$j / 7));
               }
             }
           }

@@ -210,40 +210,48 @@ code {
     -webkit-transform-origin: center right;
             transform-origin: center right;
   }
-  .schedule .return .row {
-    -webkit-transition: 1s;
-    transition: 1s;
-  }
   .schedule .return .row.col-1 {
     width: 700%;
   }
   .schedule .return .row.col-1.state-0 {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
+    transform: translateX(0%);
   }
   .schedule .return .row.col-1.state-1 {
     -webkit-transform: translateX(-14.28571%);
             transform: translateX(-14.28571%);
+    transform: translateX(-14.28571%);
   }
   .schedule .return .row.col-1.state-2 {
     -webkit-transform: translateX(-28.57143%);
             transform: translateX(-28.57143%);
+    transform: translateX(-28.57143%);
   }
   .schedule .return .row.col-1.state-3 {
     -webkit-transform: translateX(-42.85714%);
             transform: translateX(-42.85714%);
+    transform: translateX(-42.85714%);
   }
   .schedule .return .row.col-1.state-4 {
     -webkit-transform: translateX(-57.14286%);
             transform: translateX(-57.14286%);
+    transform: translateX(-57.14286%);
   }
   .schedule .return .row.col-1.state-5 {
     -webkit-transform: translateX(-71.42857%);
             transform: translateX(-71.42857%);
+    transform: translateX(-71.42857%);
   }
   .schedule .return .row.col-1.state-6 {
     -webkit-transform: translateX(-85.71429%);
             transform: translateX(-85.71429%);
+    transform: translateX(-85.71429%);
+  }
+  .schedule .return .row.col-1.state-7 {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   .schedule .return .row.col-2 {
     width: 350%;
@@ -251,18 +259,42 @@ code {
   .schedule .return .row.col-2.state-0 {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
+    transform: translateX(0%);
   }
   .schedule .return .row.col-2.state-1 {
-    -webkit-transform: translateX(-28.57143%);
-            transform: translateX(-28.57143%);
+    -webkit-transform: translateX(-14.28571%);
+            transform: translateX(-14.28571%);
+    transform: translateX(-14.28571%);
   }
   .schedule .return .row.col-2.state-2 {
-    -webkit-transform: translateX(-57.14286%);
-            transform: translateX(-57.14286%);
+    -webkit-transform: translateX(-28.57143%);
+            transform: translateX(-28.57143%);
+    transform: translateX(-28.57143%);
   }
   .schedule .return .row.col-2.state-3 {
+    -webkit-transform: translateX(-42.85714%);
+            transform: translateX(-42.85714%);
+    transform: translateX(-42.85714%);
+  }
+  .schedule .return .row.col-2.state-4 {
+    -webkit-transform: translateX(-57.14286%);
+            transform: translateX(-57.14286%);
+    transform: translateX(-57.14286%);
+  }
+  .schedule .return .row.col-2.state-5 {
     -webkit-transform: translateX(-71.42857%);
             transform: translateX(-71.42857%);
+    transform: translateX(-71.42857%);
+  }
+  .schedule .return .row.col-2.state-6 {
+    -webkit-transform: translateX(-85.71429%);
+            transform: translateX(-85.71429%);
+    transform: translateX(-85.71429%);
+  }
+  .schedule .return .row.col-2.state-7 {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   .schedule .return .row.col-3 {
     width: 233.33333%;
@@ -270,14 +302,42 @@ code {
   .schedule .return .row.col-3.state-0 {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
+    transform: translateX(0%);
   }
   .schedule .return .row.col-3.state-1 {
-    -webkit-transform: translateX(-42.85714%);
-            transform: translateX(-42.85714%);
+    -webkit-transform: translateX(-14.28571%);
+            transform: translateX(-14.28571%);
+    transform: translateX(-14.28571%);
   }
   .schedule .return .row.col-3.state-2 {
+    -webkit-transform: translateX(-28.57143%);
+            transform: translateX(-28.57143%);
+    transform: translateX(-28.57143%);
+  }
+  .schedule .return .row.col-3.state-3 {
+    -webkit-transform: translateX(-42.85714%);
+            transform: translateX(-42.85714%);
+    transform: translateX(-42.85714%);
+  }
+  .schedule .return .row.col-3.state-4 {
     -webkit-transform: translateX(-57.14286%);
             transform: translateX(-57.14286%);
+    transform: translateX(-57.14286%);
+  }
+  .schedule .return .row.col-3.state-5 {
+    -webkit-transform: translateX(-71.42857%);
+            transform: translateX(-71.42857%);
+    transform: translateX(-71.42857%);
+  }
+  .schedule .return .row.col-3.state-6 {
+    -webkit-transform: translateX(-85.71429%);
+            transform: translateX(-85.71429%);
+    transform: translateX(-85.71429%);
+  }
+  .schedule .return .row.col-3.state-7 {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   .schedule .return .row.col-4 {
     width: 175%;
@@ -285,10 +345,42 @@ code {
   .schedule .return .row.col-4.state-0 {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
+    transform: translateX(0%);
   }
   .schedule .return .row.col-4.state-1 {
+    -webkit-transform: translateX(-14.28571%);
+            transform: translateX(-14.28571%);
+    transform: translateX(-14.28571%);
+  }
+  .schedule .return .row.col-4.state-2 {
+    -webkit-transform: translateX(-28.57143%);
+            transform: translateX(-28.57143%);
+    transform: translateX(-28.57143%);
+  }
+  .schedule .return .row.col-4.state-3 {
     -webkit-transform: translateX(-42.85714%);
             transform: translateX(-42.85714%);
+    transform: translateX(-42.85714%);
+  }
+  .schedule .return .row.col-4.state-4 {
+    -webkit-transform: translateX(-57.14286%);
+            transform: translateX(-57.14286%);
+    transform: translateX(-57.14286%);
+  }
+  .schedule .return .row.col-4.state-5 {
+    -webkit-transform: translateX(-71.42857%);
+            transform: translateX(-71.42857%);
+    transform: translateX(-71.42857%);
+  }
+  .schedule .return .row.col-4.state-6 {
+    -webkit-transform: translateX(-85.71429%);
+            transform: translateX(-85.71429%);
+    transform: translateX(-85.71429%);
+  }
+  .schedule .return .row.col-4.state-7 {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   .schedule .return .row.col-5 {
     width: 140%;
@@ -296,10 +388,42 @@ code {
   .schedule .return .row.col-5.state-0 {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
+    transform: translateX(0%);
   }
   .schedule .return .row.col-5.state-1 {
+    -webkit-transform: translateX(-14.28571%);
+            transform: translateX(-14.28571%);
+    transform: translateX(-14.28571%);
+  }
+  .schedule .return .row.col-5.state-2 {
     -webkit-transform: translateX(-28.57143%);
             transform: translateX(-28.57143%);
+    transform: translateX(-28.57143%);
+  }
+  .schedule .return .row.col-5.state-3 {
+    -webkit-transform: translateX(-42.85714%);
+            transform: translateX(-42.85714%);
+    transform: translateX(-42.85714%);
+  }
+  .schedule .return .row.col-5.state-4 {
+    -webkit-transform: translateX(-57.14286%);
+            transform: translateX(-57.14286%);
+    transform: translateX(-57.14286%);
+  }
+  .schedule .return .row.col-5.state-5 {
+    -webkit-transform: translateX(-71.42857%);
+            transform: translateX(-71.42857%);
+    transform: translateX(-71.42857%);
+  }
+  .schedule .return .row.col-5.state-6 {
+    -webkit-transform: translateX(-85.71429%);
+            transform: translateX(-85.71429%);
+    transform: translateX(-85.71429%);
+  }
+  .schedule .return .row.col-5.state-7 {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   .schedule .return .row.col-6 {
     width: 116.66667%;
@@ -307,10 +431,42 @@ code {
   .schedule .return .row.col-6.state-0 {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
+    transform: translateX(0%);
   }
   .schedule .return .row.col-6.state-1 {
     -webkit-transform: translateX(-14.28571%);
             transform: translateX(-14.28571%);
+    transform: translateX(-14.28571%);
+  }
+  .schedule .return .row.col-6.state-2 {
+    -webkit-transform: translateX(-28.57143%);
+            transform: translateX(-28.57143%);
+    transform: translateX(-28.57143%);
+  }
+  .schedule .return .row.col-6.state-3 {
+    -webkit-transform: translateX(-42.85714%);
+            transform: translateX(-42.85714%);
+    transform: translateX(-42.85714%);
+  }
+  .schedule .return .row.col-6.state-4 {
+    -webkit-transform: translateX(-57.14286%);
+            transform: translateX(-57.14286%);
+    transform: translateX(-57.14286%);
+  }
+  .schedule .return .row.col-6.state-5 {
+    -webkit-transform: translateX(-71.42857%);
+            transform: translateX(-71.42857%);
+    transform: translateX(-71.42857%);
+  }
+  .schedule .return .row.col-6.state-6 {
+    -webkit-transform: translateX(-85.71429%);
+            transform: translateX(-85.71429%);
+    transform: translateX(-85.71429%);
+  }
+  .schedule .return .row.col-6.state-7 {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    transform: translateX(-100%);
   }
 }
 /*# sourceMappingURL=index.css.map */

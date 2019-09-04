@@ -3,9 +3,13 @@ import FzTable from "./components/FzTable";
 import "./App.css";
 
 function App() {
+  const count = {
+    colNum: 4,
+    slide: 2
+  };
   return (
     <div className="App">
-      <FzTable />
+      <FzTable count={count} />
     </div>
   );
 }
