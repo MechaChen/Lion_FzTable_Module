@@ -1,5 +1,6 @@
 import React from "react";
-import commaNumber from "comma-number";
+import SetOff from "./SetOff";
+import Return from "./Return";
 import axios from "axios";
 
 class FzTable extends React.Component {
@@ -11,7 +12,7 @@ class FzTable extends React.Component {
     col: null,
     state: 0,
     count: {
-      colNum: this.props.count.colNum,
+      show: this.props.count.show,
       slide: this.props.count.slide
     },
     speed: this.props.speed,
@@ -35,21 +36,15 @@ class FzTable extends React.Component {
 
   handleMobileRightTab = () => {
     const { state } = this.state;
-    const { colNum, slide } = this.state.count;
-    if (state + colNum < 7 - slide) {
+    const { show, slide } = this.state.count;
+    if (state + show < 7 - slide) {
       this.setState(() => ({ state: state + slide }));
     } else {
-      this.setState(() => ({ state: 7 - colNum }));
+      this.setState(() => ({ state: 7 - show }));
     }
   };
 
   componentDidMount() {
-    // 行程
-    axios.get("JSON/schedules.json").then(res =>
-      this.setState(() => ({
-        schedules: res.data
-      }))
-    );
     // 出發日期
     axios
       .get("JSON/setOffDays.json")
@@ -58,84 +53,33 @@ class FzTable extends React.Component {
     axios
       .get("JSON/returnDays.json")
       .then(res => this.setState(() => ({ returnDays: res.data })));
+    // 行程
+    axios.get("JSON/schedules.json").then(res =>
+      this.setState(() => ({
+        schedules: res.data
+      }))
+    );
   }
 
   render() {
-    const { colNum } = this.state.count;
-    const { setOffDays, col, state } = this.state;
+    const { show } = this.state.count;
+    const { setOffDays, returnDays, schedules, row, col, state } = this.state;
     const transition = { transition: `${this.state.speed}s` };
+    const { handleMobileLeftTab, handleMobileRightTab } = this;
     return (
       <div className="schedule">
-        <div className={`set_off col-${colNum}`}>
-          <ul className="row">
-            <li className="info date">
-              <span>去程</span>
-              <span>回程</span>
-            </li>
-            {setOffDays.map(setOffDay => (
-              <li
-                key={setOffDay}
-                className={`info date ${
-                  setOffDay.match(/^01\/01/) ? "new_year" : ""
-                }`}
-              >
-                {setOffDay}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={`return col-${colNum}`}>
-          {state > 0 && (
-            <div onClick={this.handleMobileLeftTab} className="leftBtn"></div>
-          )}
-          {state + colNum < 7 && (
-            <div onClick={this.handleMobileRightTab} className="rightBtn"></div>
-          )}
-          <ul className={`row col-${colNum} state-${state}`} style={transition}>
-            {this.state.returnDays.map(returnDay => (
-              <li
-                key={returnDay}
-                className={`info date ${
-                  returnDay.match(/^01\/01/) ? "new_year" : ""
-                }`}
-              >
-                {returnDay}
-              </li>
-            ))}
-          </ul>
-          {this.state.schedules.map((row, rowIndex) => (
-            <ul
-              key={rowIndex}
-              className={`row col-${colNum} state-${state} `}
-              style={transition}
-            >
-              {row.map((schedule, colIndex) => (
-                <li
-                  key={schedule.key}
-                  className={`info ${schedule.onSale ? "on_sale" : ""} ${
-                    col === colIndex || this.state.row === rowIndex
-                      ? "other"
-                      : ""
-                  } ${
-                    col === colIndex && this.state.row === rowIndex
-                      ? "active"
-                      : ""
-                  }`}
-                  onClick={e => this.handleClick(e, rowIndex, colIndex)}
-                >
-                  {schedule.price ? (
-                    <span className="price">
-                      {`$${commaNumber(schedule.price)}`}
-                      <span className="ex">起</span>
-                    </span>
-                  ) : (
-                    <span>{rowIndex === 0 ? "--" : "查看"}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
+        <SetOff show={show} setOffDays={setOffDays} />
+        <Return
+          show={show}
+          state={state}
+          transition={transition}
+          returnDays={returnDays}
+          schedules={schedules}
+          row={row}
+          col={col}
+          handleMobileLeftTab={handleMobileLeftTab}
+          handleMobileRightTab={handleMobileRightTab}
+        />
       </div>
     );
   }
@@ -143,7 +87,7 @@ class FzTable extends React.Component {
 
 FzTable.defaultProps = {
   count: {
-    colNum: 4,
+    show: 4,
     slide: 2
   },
   speed: 0.3,

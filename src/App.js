@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   const count = {
-    colNum: 4,
+    show: 4,
     slide: 1
   };
   const whenClick = $element => {
