@@ -1,4 +1,13 @@
+@import "./SCSS/base";
+@import "./SCSS/setOff";
+@import "./SCSS/return";
+@import "./SCSS/setOffRWD";
+@import "./SCSS/returnRWD";
+
 $focusColor: #ff8f27;
+$setOffBg: #f1f1f1;
+$returnBg: #eaedf2;
+$newYearFont: #24a07c;
 
 body {
   margin: 0;
@@ -16,160 +25,15 @@ code {
 .schedule {
   width: 90%;
   margin: 30px auto 0;
-  .set_off {
-    float: left;
-    width: 12.5%;
-    .row {
-      flex-flow: column nowrap;
-      .info {
-        width: 100%;
-      }
-    }
-  }
-  .return {
-    float: left;
-    width: 87.5%;
-    margin-left: -1px;
-    .info {
-      &.other {
-        background-color: #f3f3f3;
-      }
-      &:hover,
-      &.active {
-        border: 0.5px solid $focusColor;
-        background-color: #fff9e3;
-        position: relative;
-        z-index: 2;
-      }
-    }
-  }
-  .date {
-    background-color: #eaedf2;
-    color: #666;
-  }
-  .row {
-    display: flex;
-    .info {
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 14.285714%;
-      padding: 15px 0;
-      border: 0.5px solid #e1e2e4;
-      // margin: -1px;
-      box-sizing: border-box;
-      position: relative;
-      &:not(.date) {
-        cursor: pointer;
-      }
-      &.on_sale::after {
-        content: "最便宜";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        height: 0;
-        border-left: 20px solid $focusColor;
-        border-bottom: 20px solid transparent;
-        font-size: 14px;
-        color: $focusColor;
-      }
-      &.new_year {
-        flex-flow: column nowrap;
-      }
-      .year {
-        align-self: flex-end;
-        padding-right: 28%;
-        color: #0a0;
-        font-size: 14px;
-      }
-      .price {
-        display: inline-block;
-        margin-right: 4%;
-        font-weight: 600;
-        color: #444;
-        pointer-events: none;
-        .ex {
-          display: inline-block;
-          margin-left: 5px;
-          color: #999;
-        }
-      }
-    }
-  }
+  @include base();
+  @include setOff();
+  @include return();
 }
 
 @media all and (max-width: 980px) {
   .schedule {
     width: 90%;
-    .set_off {
-      @for $i from 1 through 6 {
-        &.col-#{$i} {
-          width: percentage(1 / ($i + 1));
-        }
-      }
-    }
-    .return {
-      @for $i from 1 through 6 {
-        &.col-#{$i} {
-          width: percentage($i / ($i + 1));
-        }
-      }
-      overflow: hidden;
-      position: relative;
-      .leftBtn,
-      .rightBtn {
-        position: absolute;
-        top: 240px;
-        left: 1px;
-        width: 30px;
-        height: 50px;
-        background-color: rgba(0, 0, 0, 0.2);
-        z-index: 3;
-        cursor: pointer;
-        &::after,
-        &::before {
-          content: "";
-          position: absolute;
-          top: 24px;
-          left: 0;
-          right: 0;
-          margin: auto;
-          width: 10px;
-          height: 2px;
-          border-radius: 2px;
-          background-color: #fff;
-          transform-origin: center left;
-          transform: rotate(-45deg);
-        }
-        &::after {
-          transform: rotate(45deg);
-        }
-      }
-      .rightBtn {
-        left: auto;
-        right: 1px;
-        &::after,
-        &::before {
-          transform-origin: center right;
-        }
-      }
-      .row {
-        // transition: 1s;
-        @for $i from 1 through 6 {
-          &.col-#{$i} {
-            width: percentage(7 / $i);
-            @for $j from 0 through 7 {
-              &.state-#{$j} {
-                // transform: translateX(percentage($i / 7 - 1));
-                transform: translateX(percentage(-$j / 7));
-                transform: translateX(percentage(-$j / 7));
-              }
-            }
-          }
-        }
-      }
-    }
+    @include setOffRWD();
+    @include returnRWD();
   }
 }

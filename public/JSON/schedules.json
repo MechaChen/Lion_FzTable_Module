@@ -22,8 +22,8 @@
     },
     {
       "key": 5,
-      "price": 15568,
-      "onSale": false
+      "price": 12300,
+      "onSale": true
     },
     {
       "key": 6,
@@ -212,8 +212,8 @@
     },
     {
       "key": 41,
-      "price": 12300,
-      "onSale": true
+      "price": 15568,
+      "onSale": false
     },
     {
       "key": 42,
@@ -249,8 +249,8 @@
     },
     {
       "key": 48,
-      "price": 12300,
-      "onSale": true
+      "price": 15568,
+      "onSale": false
     },
     {
       "key": 49,

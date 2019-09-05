@@ -1,0 +1,9 @@
+@mixin setOffRWD() {
+  .set_off {
+    @for $i from 1 through 6 {
+      &.col-#{$i} {
+        width: percentage(1 / ($i + 1));
+      }
+    }
+  }
+}

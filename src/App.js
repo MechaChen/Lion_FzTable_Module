@@ -5,11 +5,14 @@ import "./App.css";
 function App() {
   const count = {
     colNum: 4,
-    slide: 2
+    slide: 1
+  };
+  const whenClick = $element => {
+    console.log($element.innerText);
   };
   return (
     <div className="App">
-      <FzTable count={count} />
+      <FzTable count={count} whenClick={whenClick} />
     </div>
   );
 }

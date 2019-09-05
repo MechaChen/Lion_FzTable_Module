@@ -1,0 +1,63 @@
+@mixin returnRWD() {
+  .return {
+    @for $i from 1 through 6 {
+      &.col-#{$i} {
+        width: percentage($i / ($i + 1));
+      }
+    }
+    overflow: hidden;
+    position: relative;
+    .leftBtn,
+    .rightBtn {
+      position: absolute;
+      top: 240px;
+      left: 1px;
+      width: 30px;
+      height: 50px;
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index: 3;
+      cursor: pointer;
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        top: 24px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 10px;
+        height: 2px;
+        border-radius: 2px;
+        background-color: #fff;
+        transform-origin: center left;
+        transform: rotate(-45deg);
+      }
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+    .rightBtn {
+      left: auto;
+      right: 1px;
+      &::after,
+      &::before {
+        transform-origin: center right;
+      }
+    }
+    .row {
+      // transition: 1s;
+      @for $i from 1 through 6 {
+        &.col-#{$i} {
+          width: percentage(7 / $i);
+          @for $j from 0 through 7 {
+            &.state-#{$j} {
+              // transform: translateX(percentage($i / 7 - 1));
+              transform: translateX(percentage(-$j / 7));
+              transform: translateX(percentage(-$j / 7));
+            }
+          }
+        }
+      }
+    }
+  }
+}

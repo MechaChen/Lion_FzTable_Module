@@ -15,42 +15,16 @@ code {
   margin: 30px auto 0;
 }
 
-.schedule .set_off {
-  float: left;
-  width: 12.5%;
-}
-
-.schedule .set_off .row {
+.schedule .date {
+  background-color: #eaedf2;
+  color: #666;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-}
-
-.schedule .set_off .row .info {
-  width: 100%;
-}
-
-.schedule .return {
-  float: left;
-  width: 87.5%;
-  margin-left: -1px;
-}
-
-.schedule .return .info.other {
-  background-color: #f3f3f3;
-}
-
-.schedule .return .info:hover, .schedule .return .info.active {
-  border: 0.5px solid #ff8f27;
-  background-color: #fff9e3;
-  position: relative;
-  z-index: 2;
-}
-
-.schedule .date {
-  background-color: #eaedf2;
-  color: #666;
 }
 
 .schedule .row {
@@ -95,13 +69,6 @@ code {
   color: #ff8f27;
 }
 
-.schedule .row .info.new_year {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-}
-
 .schedule .row .info .year {
   -ms-flex-item-align: end;
       align-self: flex-end;
@@ -122,6 +89,63 @@ code {
   display: inline-block;
   margin-left: 5px;
   color: #999;
+}
+
+.schedule .row .new_year::before {
+  content: "2018";
+  display: block;
+  margin: 0 0 5px 25px;
+  color: #24a07c;
+}
+
+.schedule .set_off {
+  float: left;
+  width: 12.5%;
+}
+
+.schedule .set_off .row {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.schedule .set_off .row .info {
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+.schedule .set_off .row .info:first-child {
+  background-color: #eaedf2;
+}
+
+.schedule .set_off .row .info span:first-child {
+  margin: -5px 15px auto auto;
+}
+
+.schedule .set_off .row .info span:last-child {
+  margin: auto auto -5px 15px;
+}
+
+.schedule .return {
+  float: left;
+  width: 87.5%;
+  margin-left: -1px;
+}
+
+.schedule .return .row:first-of-type .info {
+  background-color: #eaedf2;
+}
+
+.schedule .return .info.other {
+  background-color: #f3f3f3;
+}
+
+.schedule .return .info:hover, .schedule .return .info.active {
+  border: 0.5px solid #ff8f27;
+  background-color: #fff9e3;
+  position: relative;
+  z-index: 2;
 }
 
 @media all and (max-width: 980px) {

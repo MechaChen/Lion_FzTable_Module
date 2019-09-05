@@ -1,0 +1,62 @@
+@mixin base() {
+  .date {
+    background-color: #eaedf2;
+    color: #666;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .row {
+    display: flex;
+    .info {
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 14.285714%;
+      padding: 15px 0;
+      border: 0.5px solid #e1e2e4;
+      // margin: -1px;
+      box-sizing: border-box;
+      position: relative;
+      &:not(.date) {
+        cursor: pointer;
+      }
+      &.on_sale::after {
+        content: "最便宜";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 0;
+        border-left: 20px solid $focusColor;
+        border-bottom: 20px solid transparent;
+        font-size: 14px;
+        color: $focusColor;
+      }
+      .year {
+        align-self: flex-end;
+        padding-right: 28%;
+        color: #0a0;
+        font-size: 14px;
+      }
+      .price {
+        display: inline-block;
+        margin-right: 4%;
+        font-weight: 600;
+        color: #444;
+        pointer-events: none;
+        .ex {
+          display: inline-block;
+          margin-left: 5px;
+          color: #999;
+        }
+      }
+    }
+    .new_year::before {
+      content: "2018";
+      display: block;
+      margin: 0 0 5px 25px;
+      color: $newYearFont;
+    }
+  }
+}

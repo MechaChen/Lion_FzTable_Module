@@ -1,0 +1,24 @@
+@mixin return() {
+  .return {
+    float: left;
+    width: 87.5%;
+    margin-left: -1px;
+    .row:first-of-type {
+      .info {
+        background-color: $returnBg;
+      }
+    }
+    .info {
+      &.other {
+        background-color: #f3f3f3;
+      }
+      &:hover,
+      &.active {
+        border: 0.5px solid $focusColor;
+        background-color: #fff9e3;
+        position: relative;
+        z-index: 2;
+      }
+    }
+  }
+}

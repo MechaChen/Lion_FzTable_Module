@@ -66,14 +66,19 @@ class FzTable extends React.Component {
     const transition = { transition: `${this.state.speed}s` };
     return (
       <div className="schedule">
-        <div className={`set_off col-${this.state.colNum}`}>
+        <div className={`set_off col-${colNum}`}>
           <ul className="row">
             <li className="info date">
               <span>去程</span>
               <span>回程</span>
             </li>
             {setOffDays.map(setOffDay => (
-              <li key={setOffDay} className="info date">
+              <li
+                key={setOffDay}
+                className={`info date ${
+                  setOffDay.match(/^01\/01/) ? "new_year" : ""
+                }`}
+              >
                 {setOffDay}
               </li>
             ))}
@@ -88,7 +93,12 @@ class FzTable extends React.Component {
           )}
           <ul className={`row col-${colNum} state-${state}`} style={transition}>
             {this.state.returnDays.map(returnDay => (
-              <li key={returnDay} className="info date">
+              <li
+                key={returnDay}
+                className={`info date ${
+                  returnDay.match(/^01\/01/) ? "new_year" : ""
+                }`}
+              >
                 {returnDay}
               </li>
             ))}
@@ -96,7 +106,7 @@ class FzTable extends React.Component {
           {this.state.schedules.map((row, rowIndex) => (
             <ul
               key={rowIndex}
-              className={`row col-${colNum} state-${state}`}
+              className={`row col-${colNum} state-${state} `}
               style={transition}
             >
               {row.map((schedule, colIndex) => (
