@@ -6,6 +6,12 @@ body {
   color: #999;
 }
 
+@media all and (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
@@ -103,12 +109,6 @@ code {
   word-break: keep-all;
 }
 
-@media all and (max-width: 480px) {
-  .schedule .row .new_year::before {
-    margin: 0 0 0 5px;
-  }
-}
-
 .schedule .set_off {
   width: 12.5%;
   -ms-flex-negative: 1;
@@ -179,6 +179,15 @@ code {
   .schedule .set_off {
     width: 15%;
   }
+}
+
+@media all and (max-width: 980px) and (max-width: 480px) {
+  .schedule .set_off .row .new_year::before {
+    margin: 0 0 0 5px;
+  }
+}
+
+@media all and (max-width: 980px) {
   .schedule .return {
     width: 85%;
     overflow: hidden;
