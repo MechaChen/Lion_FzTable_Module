@@ -9,6 +9,7 @@ const Return = props => {
     returnDays,
     schedules,
     col,
+    handleClick,
     handleMobileLeftTab,
     handleMobileRightTab
   } = props;
@@ -45,7 +46,7 @@ const Return = props => {
               className={`info ${schedule.onSale ? "on_sale" : ""} ${
                 col === colIndex || props.row === rowIndex ? "other" : ""
               } ${col === colIndex && props.row === rowIndex ? "active" : ""}`}
-              onClick={e => this.handleClick(e, rowIndex, colIndex)}
+              onClick={e => handleClick(e, rowIndex, colIndex)}
             >
               {schedule.price ? (
                 <span className="price">

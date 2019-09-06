@@ -65,7 +65,7 @@ class FzTable extends React.Component {
     const { show } = this.state.count;
     const { setOffDays, returnDays, schedules, row, col, state } = this.state;
     const transition = { transition: `${this.state.speed}s` };
-    const { handleMobileLeftTab, handleMobileRightTab } = this;
+    const { handleClick, handleMobileLeftTab, handleMobileRightTab } = this;
     return (
       <div className="schedule">
         <SetOff show={show} setOffDays={setOffDays} />
@@ -77,6 +77,7 @@ class FzTable extends React.Component {
           schedules={schedules}
           row={row}
           col={col}
+          handleClick={handleClick}
           handleMobileLeftTab={handleMobileLeftTab}
           handleMobileRightTab={handleMobileRightTab}
         />
