@@ -25,6 +25,7 @@ code {
 .schedule {
   width: 90%;
   margin: 30px auto 0;
+  display: flex;
   @include base();
   @include setOff();
   @include return();

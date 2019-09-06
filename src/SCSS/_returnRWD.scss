@@ -1,16 +1,12 @@
 @mixin returnRWD() {
   .return {
-    @for $i from 1 through 6 {
-      &.col-#{$i} {
-        width: percentage($i / ($i + 1));
-      }
-    }
+    width: 85%;
     overflow: hidden;
     position: relative;
     .leftBtn,
     .rightBtn {
       position: absolute;
-      top: 240px;
+      top: 175px;
       left: 1px;
       width: 30px;
       height: 50px;
@@ -38,7 +34,7 @@
     }
     .rightBtn {
       left: auto;
-      right: 1px;
+      right: 0px;
       &::after,
       &::before {
         transform-origin: center right;

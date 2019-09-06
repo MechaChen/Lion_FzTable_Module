@@ -1,6 +1,5 @@
 @mixin return() {
   .return {
-    float: left;
     width: 87.5%;
     margin-left: -1px;
     .row:first-of-type {
@@ -19,6 +18,11 @@
         position: relative;
         z-index: 2;
       }
+    }
+    .date {
+      justify-content: flex-end;
+      padding: 20px 0 10px;
+      position: relative;
     }
   }
 }

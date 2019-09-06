@@ -13,6 +13,9 @@ code {
 .schedule {
   width: 90%;
   margin: 30px auto 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .schedule .date {
@@ -34,7 +37,7 @@ code {
 }
 
 .schedule .row .info {
-  height: 60px;
+  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -47,6 +50,7 @@ code {
   width: 14.285714%;
   padding: 15px 0;
   border: 0.5px solid #e1e2e4;
+  word-break: break-all;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
@@ -96,11 +100,19 @@ code {
   display: block;
   margin: 0 0 5px 25px;
   color: #24a07c;
+  word-break: keep-all;
+}
+
+@media all and (max-width: 480px) {
+  .schedule .row .new_year::before {
+    margin: 0 0 0 5px;
+  }
 }
 
 .schedule .set_off {
-  float: left;
   width: 12.5%;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
 }
 
 .schedule .set_off .row {
@@ -113,6 +125,7 @@ code {
 .schedule .set_off .row .info {
   width: 100%;
   background-color: #f1f1f1;
+  position: relative;
 }
 
 .schedule .set_off .row .info:first-child {
@@ -120,15 +133,18 @@ code {
 }
 
 .schedule .set_off .row .info span:first-child {
-  margin: -5px 15px auto auto;
+  position: absolute;
+  top: 6px;
+  right: 6px;
 }
 
 .schedule .set_off .row .info span:last-child {
-  margin: auto auto -5px 15px;
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
 }
 
 .schedule .return {
-  float: left;
   width: 87.5%;
   margin-left: -1px;
 }
@@ -148,54 +164,30 @@ code {
   z-index: 2;
 }
 
+.schedule .return .date {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 20px 0 10px;
+  position: relative;
+}
+
 @media all and (max-width: 980px) {
   .schedule {
     width: 90%;
   }
-  .schedule .set_off.col-1 {
-    width: 50%;
-  }
-  .schedule .set_off.col-2 {
-    width: 33.33333%;
-  }
-  .schedule .set_off.col-3 {
-    width: 25%;
-  }
-  .schedule .set_off.col-4 {
-    width: 20%;
-  }
-  .schedule .set_off.col-5 {
-    width: 16.66667%;
-  }
-  .schedule .set_off.col-6 {
-    width: 14.28571%;
+  .schedule .set_off {
+    width: 15%;
   }
   .schedule .return {
+    width: 85%;
     overflow: hidden;
     position: relative;
-  }
-  .schedule .return.col-1 {
-    width: 50%;
-  }
-  .schedule .return.col-2 {
-    width: 66.66667%;
-  }
-  .schedule .return.col-3 {
-    width: 75%;
-  }
-  .schedule .return.col-4 {
-    width: 80%;
-  }
-  .schedule .return.col-5 {
-    width: 83.33333%;
-  }
-  .schedule .return.col-6 {
-    width: 85.71429%;
   }
   .schedule .return .leftBtn,
   .schedule .return .rightBtn {
     position: absolute;
-    top: 240px;
+    top: 175px;
     left: 1px;
     width: 30px;
     height: 50px;
@@ -228,7 +220,7 @@ code {
   }
   .schedule .return .rightBtn {
     left: auto;
-    right: 1px;
+    right: 0px;
   }
   .schedule .return .rightBtn::after, .schedule .return .rightBtn::before {
     -webkit-transform-origin: center right;

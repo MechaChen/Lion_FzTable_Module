@@ -11,10 +11,6 @@ class FzTable extends React.Component {
     row: null,
     col: null,
     state: 0,
-    count: {
-      show: this.props.count.show,
-      slide: this.props.count.slide
-    },
     speed: this.props.speed,
     whenClick: this.props.whenClick
   };
@@ -26,7 +22,8 @@ class FzTable extends React.Component {
 
   handleMobileLeftTab = () => {
     const { state } = this.state;
-    const { slide } = this.state.count;
+    const { slide } = this.props.count;
+    this.setState(() => ({ speed: this.props.speed }));
     if (state - slide < 0) {
       this.setState(() => ({ state: 0 }));
     } else {
@@ -36,13 +33,16 @@ class FzTable extends React.Component {
 
   handleMobileRightTab = () => {
     const { state } = this.state;
-    const { show, slide } = this.state.count;
+    const { show, slide } = this.props.count;
+    this.setState(() => ({ speed: this.props.speed }));
     if (state + show < 7 - slide) {
       this.setState(() => ({ state: state + slide }));
     } else {
       this.setState(() => ({ state: 7 - show }));
     }
   };
+
+  handleTra;
 
   componentDidMount() {
     // 出發日期
@@ -59,10 +59,17 @@ class FzTable extends React.Component {
         schedules: res.data
       }))
     );
+
+    window.addEventListener("resize", () => {
+      this.setState(() => ({ speed: 0 }));
+      if (window.innerWidth > 980) {
+        this.setState(() => ({ speed: this.props.speed }));
+      }
+    });
   }
 
   render() {
-    const { show } = this.state.count;
+    const { show } = this.props.count;
     const { setOffDays, returnDays, schedules, row, col, state } = this.state;
     const transition = { transition: `${this.state.speed}s` };
     const { handleClick, handleMobileLeftTab, handleMobileRightTab } = this;

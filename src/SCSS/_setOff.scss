@@ -1,21 +1,28 @@
 @mixin setOff() {
   .set_off {
-    float: left;
     width: 12.5%;
+    flex-shrink: 1;
     .row {
       flex-flow: column nowrap;
       .info {
         width: 100%;
         background-color: $setOffBg;
+        position: relative;
         &:first-child {
           background-color: $returnBg;
         }
         span {
           &:first-child {
-            margin: -5px 15px auto auto;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            // margin: -5px 15px auto auto;
           }
           &:last-child {
-            margin: auto auto -5px 15px;
+            position: absolute;
+            bottom: 6px;
+            left: 6px;
+            // margin: auto auto -5px 15px;
           }
         }
       }
